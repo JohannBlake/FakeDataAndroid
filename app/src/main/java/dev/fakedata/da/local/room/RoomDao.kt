@@ -5,10 +5,15 @@ import androidx.room.Dao
 import androidx.room.Query
 import dev.fakedata.model.UserInfo
 
+const val sqlGetUsers = "SELECT * FROM Users ORDER BY firstName COLLATE NOCASE "
 
 @Dao
 interface RoomDao {
-    // Users
-    @Query("SELECT * FROM Users ORDER BY firstName COLLATE NOCASE ASC, lastName COLLATE NOCASE ASC")
-    fun getUsers(): DataSource.Factory<Int, UserInfo>
+    // Get users in ascending order.
+    @Query(sqlGetUsers + "ASC")
+    fun getUsersAsc(): DataSource.Factory<Int, UserInfo>
+
+    // Get users in descending order.
+    @Query(sqlGetUsers + "DESC")
+    fun getUsersDesc(): DataSource.Factory<Int, UserInfo>
 }
