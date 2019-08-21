@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">FakeDataAndroid</string>
+    <string name="app_name">Fake Data Test</string>
+    <string name="application_error">Application Error</string>
+    <string name="cancel">Cancel</string>
+    <string name="fatal_error">A fatal error has occurred. It is recommended to restart the app.</string>
+    <string name="information">Information</string>
+    <string name="notification_category_name_fake_data">Fake Data</string>
+    <string name="ok">OK</string>
+    <string name="users">Users</string>
 </resources>
