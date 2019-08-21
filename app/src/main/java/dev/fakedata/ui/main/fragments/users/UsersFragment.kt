@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dev.fakedata.R
 import dev.fakedata.bo.UsersAPIOptions
 import dev.fakedata.databinding.FragmentUsersBinding
@@ -37,6 +38,7 @@ class UsersFragment : Fragment() {
     lateinit var usersViewModelFactory: UsersViewModelFactory
 
     private lateinit var mUsersViewModel: UsersViewModel
+    private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var recyclerView: RecyclerView
 
     private val clickListener: ClickListener = this::onListItemClicked
@@ -53,6 +55,9 @@ class UsersFragment : Fragment() {
         mContext = context
 
         val binding = FragmentUsersBinding.inflate(inflater, container, false)
+
+        swipeRefresh = binding.swipeRefreshLayout
+        recyclerView = binding.rvUsers
 
         mUsersViewModel = ViewModelProviders.of(this, usersViewModelFactory).get(UsersViewModel::class.java)
 
