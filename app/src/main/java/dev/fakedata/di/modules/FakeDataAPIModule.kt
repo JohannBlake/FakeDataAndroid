@@ -11,10 +11,11 @@ import okhttp3.OkHttpClient
 import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
 /**
- * Provides a Retrofit for accessing LinkedIn content.
+ * Provides a Retrofit for accessing content on the backend.
  */
 @Module
 class FakeDataAPIModule {
@@ -24,6 +25,7 @@ class FakeDataAPIModule {
     fun provideRetrofitForLinkedIn(): FakeDataAPI {
         return Retrofit.Builder()
             .baseUrl(FAKE_DATA_BASE_USERS_ADDRESS)
+            .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .client(initializeRetrofit())
             .build()

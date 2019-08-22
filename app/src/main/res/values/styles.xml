@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.FakeDataTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorControlHighlight">#B420D8D8</item>
+    </style>
+
     <style name="listItemText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

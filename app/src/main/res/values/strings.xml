@@ -6,5 +6,6 @@
     <string name="information">Information</string>
     <string name="notification_category_name_fake_data">Fake Data</string>
     <string name="ok">OK</string>
+    <string name="problem_retrieving_users">Problem retrieving users</string>
     <string name="users">Users</string>
 </resources>

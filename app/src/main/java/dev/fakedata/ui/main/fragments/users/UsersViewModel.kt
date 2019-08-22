@@ -13,7 +13,20 @@ import javax.inject.Inject
 class UsersViewModel @Inject constructor(private val users: Users) : ViewModel() {
 
     fun getUsersFromLocalDB(options: UsersAPIOptions): LiveData<PagedList<UserInfo>> {
-        return LivePagedListBuilder(users.getUsersFromLocalDB(options), options.pageSize).build()
+        return LivePagedListBuilder(users.getUsersFromLocalDB(options), options.pageSize).setBoundaryCallback(object : PagedList.BoundaryCallback<UserInfo>() {
+            override fun onZeroItemsLoaded() {
+                super.onZeroItemsLoaded()
+                users.getUsersFromServer(options)
+            }
+
+            override fun onItemAtEndLoaded(itemAtEnd: UserInfo) {
+                super.onItemAtEndLoaded(itemAtEnd)
+            }
+
+            override fun onItemAtFrontLoaded(itemAtFront: UserInfo) {
+                super.onItemAtFrontLoaded(itemAtFront)
+            }
+        }).build()
     }
 
 }

@@ -17,7 +17,7 @@ interface FakeDataAPI {
     /**
      * Get users from the list of 1,000 non-random users.
      */
-    @GET("/get_users")
+    @GET("get_users")
     fun getUsers(
         @Query("sp") startPos: Int, @Query("ps") pageSize: Int, @Query("sd") sortDirection: String, @Query("ps") imageSize: Int
     ): Observable<List<UserInfo>>

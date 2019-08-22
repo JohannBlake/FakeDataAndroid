@@ -7,7 +7,7 @@ import io.reactivex.Observable
 class Users : BaseBusinessObject() {
     fun getUsersFromLocalDB(options: UsersAPIOptions) = App.context.repository.getUsersFromLocalDB(options)
 
-    fun getUsersFromServer(options: UsersAPIOptions): Observable<List<UserInfo>> {
-        return App.context.repository.getUsersFromServer(options)
+    fun getUsersFromServer(options: UsersAPIOptions) {
+        App.context.repository.getUsersFromServer(options)
     }
 }
