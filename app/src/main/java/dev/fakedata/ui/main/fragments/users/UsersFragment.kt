@@ -45,8 +45,6 @@ class UsersFragment : Fragment() {
     private val recyclerViewAdapter = UsersAdapter(clickListener)
 
     private var mContext: Context? = null
-    private var mAPIOptions = UsersAPIOptions()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,7 +61,8 @@ class UsersFragment : Fragment() {
 
         setupRecyclerView()
 
-        mUsersViewModel.getUsersFromLocalDB(mAPIOptions).observe(this, Observer { users ->
+        mUsersViewModel.getUsersFromLocalDB().observe(this, Observer { users ->
+            //mUsersViewModel.totalPageItemsRetrieved(users.size)
             users?.let {
                 render(users)
             }

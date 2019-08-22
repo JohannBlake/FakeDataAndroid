@@ -36,6 +36,7 @@ class Repository @Inject constructor(
 
         mFakeDataAPI.getUsers(options.startPos, options.pageSize, if (options.sortDesc) "desc" else "asc", options.imageSize)
             .doOnNext {users ->
+                options.startPos += users.size
                 mAppDao.storeUsers(users)
             }
             .subscribeOn(Schedulers.io())

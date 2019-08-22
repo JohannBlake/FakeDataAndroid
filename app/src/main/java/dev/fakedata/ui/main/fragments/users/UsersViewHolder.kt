@@ -25,15 +25,16 @@ class UsersViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
      * Items might be null if they are not paged in yet. PagedListAdapter will re-bind the
      * ViewHolder when Item is loaded.
      */
-    fun bindTo(con: UserInfo?) {
-        this.userInfo = con
+    fun bindTo(userInfo: UserInfo?) {
+        this.userInfo = userInfo
 
         Glide.with(App.context)
-            .load(con?.photoUrl)
+            .load(userInfo?.photoUrl)
             .apply(RequestOptions.circleCropTransform())
             .placeholder(R.drawable.ic_person)
             .into(ivPhoto);
 
-        tvOccupation.text = con?.jobTitle
+        tvName.text = userInfo?.firstName + " " + userInfo?.lastName
+        tvOccupation.text = userInfo?.jobTitle
     }
 }
